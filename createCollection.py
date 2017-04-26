@@ -9,21 +9,8 @@ def main():
 def createCollection(username, fileName):
 
     createCollectionsDirectory(CONST_COLLECTIONS_NAME)
-    createCollectionDirectory(username)
-
-    # try:
-    #     f = open(arguments.collection_name +".dat", 'r')
-    #     print f
-    # except IOError:
-    #     print 'Error: file %s no found.' % (arguments.collection_name)
-    #     fileCreateInput = raw_input('Would you like to create it? (y/n) ')
-    #     if fileCreateInput.lower() == 'y' or fileCreateInput.lower() == 'yes':
-    #         try:
-    #             f = open(arguments.collection_name+'.dat', 'w+')
-    #             f.close()
-    #         except:
-    #             print 'Error: file %s could not be created.' % (arguments.collection_name)
-    #             print 'Exiting Program'
+    collectionPath = createCollectionDirectory(username)
+    createCollectionFile(collectionPath, username, fileName)
 
 def createCollectionsDirectory(collectionsName):
     if os.path.isdir(collectionsName) is False and os.path.exists(collectionsName) is False:
@@ -33,15 +20,20 @@ def createCollectionsDirectory(collectionsName):
             print 'Error: Could not create directory: %s' %(collectionsName)
 
 def createCollectionDirectory(username):
-    collectionsPath = CONST_COLLECTIONS_NAME+'/'+username+'_collections'
-    if os.path.isdir(collectionsPath) is False and os.path.exists(collectionsPath) is False:
+    collectionPath = CONST_COLLECTIONS_NAME+'/'+username+'_collections'
+    if os.path.isdir(collectionPath) is False and os.path.exists(collectionPath) is False:
         try:
             os.makedirs(collectionPath)
-        except:
+        except OSError:
             print 'Error: Could not create collections directory for user: %s' %(username)
+    return collectionPath
 
-def createCollectionFile(fileName):
-    return False
+def createCollectionFile(collectionPath, username, fileName):
+    try:
+        collectionFile = open(collectionPath+'/'+username+'_'+fileName+'_collection.dat', 'w+')
+        collectionFile.close()
+    except IOError:
+        print 'Error: file %s could not be created.' % (collectionPath+'/'+username+'_'+fileName+'_collection.dat')
 
 if __name__ == '__main__':
     main()
