@@ -1,6 +1,6 @@
 from DataObjects.book import Book
 
-class bookFactory(object):
+class BookFactory(object):
     def __init__(self):
         return False
 

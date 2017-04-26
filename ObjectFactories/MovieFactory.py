@@ -1,9 +1,9 @@
 from DataObjects.movie import Movie
 
-class movieFactory(object):
+class MovieFactory(object):
     def __init__(self):
         return False
 
     @staticmethod
-    def createmovie(name, addedOn, lastEdit, director):
-        return movie(name, addedOn, lastEdit, director)
+    def createMovie(name, addedOn, lastEdit, director):
+        return Movie(name, addedOn, lastEdit, director)
