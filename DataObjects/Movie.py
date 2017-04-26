@@ -1,3 +1,6 @@
-class Album(Item) :
-    def __init__(self, director):
+from item import Item
+
+class Movie(Item) :
+    def __init__(self, name, addedOn, lastEdit, director):
+        Item.__init__(self, name, addedOn, lastEdit)
         self.director = director
