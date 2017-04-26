@@ -2,10 +2,6 @@ import argparse, os
 
 CONST_COLLECTIONS_NAME = 'collections'
 
-def main():
-    createCollection('agarner', 'books')
-
-
 def createCollection(username, fileName):
 
     createCollectionsDirectory(CONST_COLLECTIONS_NAME)
@@ -34,6 +30,3 @@ def createCollectionFile(collectionPath, username, fileName):
         collectionFile.close()
     except IOError:
         print 'Error: file %s could not be created.' % (collectionPath+'/'+username+'_'+fileName+'_collection.dat')
-
-if __name__ == '__main__':
-    main()
