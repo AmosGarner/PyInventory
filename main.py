@@ -21,6 +21,10 @@ def generateCollection(collectionType, collectionName, username, length):
         for i in range(0,length):
             item = ItemFactory.factory('item', [i, 'item' + str(i), now, now])
             items.append(item)
+    elif collectionType.lower() == 'album':
+        for i in range(0,length):
+            item = ItemFactory.factory('album', [i, 'album' + str(i), now, now, 'artist_' + str(i)])
+            items.append(item)
 
     return Collection(collectionName, username, items)
 
