@@ -41,15 +41,18 @@ def generateCollection(collectionType, collectionName, username, length):
 def main():
         arguments = generateArgumentsFromParser()
 
-        createCollection(arguments.username, arguments.collectionName)
-        itemCollection = generateCollection(arguments.collectionType.lower(), arguments.collectionName, arguments.username, int(arguments.length))
+        if arguments.test is None:
+            createCollection(arguments.username, arguments.collectionName)
+            itemCollection = generateCollection(arguments.collectionType.lower(), arguments.collectionName, arguments.username, int(arguments.length))
 
-        collectionsFilePath = CONST_COLLECTIONS_NAME+'/'+arguments.username+'_'+CONST_COLLECTIONS_NAME+'/'+arguments.username+'_'+arguments.collectionName+'_'+'collection.dat'
+            collectionsFilePath = CONST_COLLECTIONS_NAME+'/'+arguments.username+'_'+CONST_COLLECTIONS_NAME+'/'+arguments.username+'_'+arguments.collectionName+'_'+'collection.dat'
 
-        if os.path.isfile(collectionsFilePath):
-            collectionFile = open(collectionsFilePath, 'w')
-            collectionFile.write(itemCollection.toJSON())
-            collectionFile.close()
+            if os.path.isfile(collectionsFilePath):
+                collectionFile = open(collectionsFilePath, 'w')
+                collectionFile.write(itemCollection.toJSON())
+                collectionFile.close()
+        else:
+            return None        
 
 if __name__ == '__main__':
     main()
