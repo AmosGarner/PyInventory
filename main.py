@@ -40,7 +40,7 @@ def main():
         arguments = generateArgumentsFromParser()
 
         createCollection(arguments.username, arguments.collectionName)
-        itemCollection = generateCollection('item', arguments.collectionName, arguments.username, int(arguments.length))
+        itemCollection = generateCollection(arguments.collectionType.lower(), arguments.collectionName, arguments.username, int(arguments.length))
 
         collectionsFilePath = CONST_COLLECTIONS_NAME+'/'+arguments.username+'_'+CONST_COLLECTIONS_NAME+'/'+arguments.username+'_'+arguments.collectionName+'_'+'collection.dat'
 
