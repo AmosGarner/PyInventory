@@ -52,7 +52,17 @@ def main():
                 collectionFile.write(itemCollection.toJSON())
                 collectionFile.close()
         else:
-            return None        
+            arguments.username = 'TestUser'
+            for value in CONST_OBJECT_TYPES:
+                createCollection(arguments.username, value)
+                itemCollection = generateCollection(value, value, arguments.username, 10)
+
+                collectionsFilePath = CONST_COLLECTIONS_NAME+'/'+arguments.username+'_'+CONST_COLLECTIONS_NAME+'/'+arguments.username+'_'+value+'_'+'collection.dat'
+
+                if os.path.isfile(collectionsFilePath):
+                    collectionFile = open(collectionsFilePath, 'w')
+                    collectionFile.write(itemCollection.toJSON())
+                    collectionFile.close()
 
 if __name__ == '__main__':
     main()
