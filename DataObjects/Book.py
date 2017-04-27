@@ -1,4 +1,4 @@
-from item import Item
+from Item import Item
 
 class Book(Item) :
     def __init__(self, name, addedOn, lastEdit, author):

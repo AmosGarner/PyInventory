@@ -1,5 +1,8 @@
-class Item(object):
-    def __init__(self, name, addedOn, lastEdit):
+import json
+
+class Item:
+    def __init__(self, itemId, name, addedOn, lastEdit):
+        self.id = itemId
         self.name = name
-        self.addedOn = addedOn
-        self.lastEdit = lastEdit
+        self.addedOn = str(addedOn)
+        self.lastEdit = str(lastEdit)
