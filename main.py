@@ -10,6 +10,7 @@ def generateArgumentsFromParser():
     parser.add_argument('--user', dest='username', required=True)
     parser.add_argument('--type', dest='collectionType', required=True)
     parser.add_argument('--name', dest='collectionName', required=True)
+    parser.add_argument('--length', dest='length', required=True)
     return parser.parse_args()
 
 def generateCollection(collectionType, collectionName, username, length):
@@ -27,7 +28,7 @@ def main():
         arguments = generateArgumentsFromParser()
 
         createCollection(arguments.username, arguments.collectionName)
-        itemCollection = generateCollection('item', arguments.collectionName, arguments.username, 10)
+        itemCollection = generateCollection('item', arguments.collectionName, arguments.username, int(arguments.length))
 
         collectionsFilePath = CONST_COLLECTIONS_NAME+'/'+arguments.username+'_'+CONST_COLLECTIONS_NAME+'/'+arguments.username+'_'+arguments.collectionName+'_'+'collection.dat'
 
