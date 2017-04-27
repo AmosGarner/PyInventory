@@ -1,4 +1,4 @@
-import argparse, os
+import os
 
 CONST_COLLECTIONS_NAME = 'collections'
 

@@ -1,26 +1,33 @@
 from createCollection import createCollection
 from ObjectFactories.ItemFactory import ItemFactory
 from DataObjects.Collection import Collection
-import datetime, json, os.path
+import datetime, json, os.path, argparse
 
 CONST_COLLECTIONS_NAME = 'collections'
-CONST_USERNAME = 'agarner'
-CONST_COLLECTION = 'Items'
 
-def generateItemsCollection():
+def generateArgumentsFromParser():
+    parser = parser = argparse.ArgumentParser(description="Runs PyTriSearch googling utility.")
+    return parser.parse_args()
+
+def generateItemsCollection(collectionName, username):
     items = []
     now = datetime.datetime.now()
     for i in range(0,10):
         item = ItemFactory.factory('item', [i, 'item' + str(i), now, now])
         print(item.name)
         items.append(item)
-    return Collection(CONST_COLLECTION, CONST_USERNAME, items)
+    return Collection(collectionName, username, items)
 
 def main():
-        createCollection(CONST_USERNAME,CONST_COLLECTION)
-        itemCollection = generateItemsCollection()
+        arguments = generateArgumentsFromParser()
 
-        collectionsFilePath = CONST_COLLECTIONS_NAME+'/'+CONST_USERNAME+'_'+CONST_COLLECTIONS_NAME+'/'+CONST_USERNAME+'_'+CONST_COLLECTION+'_'+'collection.dat'
+        username = 'agarner'
+        collectionName = 'Items'
+
+        createCollection(username,collectionName)
+        itemCollection = generateItemsCollection(collectionName, username)
+
+        collectionsFilePath = CONST_COLLECTIONS_NAME+'/'+username+'_'+CONST_COLLECTIONS_NAME+'/'+username+'_'+collectionName+'_'+'collection.dat'
         if os.path.isfile(collectionsFilePath):
             collectionFile = open(collectionsFilePath, 'w')
             collectionFile.write(itemCollection.toJSON())
