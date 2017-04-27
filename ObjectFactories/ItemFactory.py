@@ -5,13 +5,14 @@ from DataObjects.Item import Item
 
 class ItemFactory:
 
-    def factory(type, itemAttributes):
-        if type == 'album':
+    def factory(objectType, itemAttributes):
+        objectType = objectType.lower()
+        if objectType == 'album':
             return Album(itemAttributes[0], itemAttributes[1], itemAttributes[2], itemAttributes[3], itemAttributes[4])
-        elif type == 'book':
+        elif objectType == 'book':
             return Book(itemAttributes[0], itemAttributes[1], itemAttributes[2], itemAttributes[3], itemAttributes[4])
-        elif type == 'movie':
+        elif objectType == 'movie':
             return Movie(itemAttributes[0], itemAttributes[1], itemAttributes[2], itemAttributes[3], itemAttributes[4])
-        elif type == 'item':
+        elif objectType == 'item':
             return Item(itemAttributes[0], itemAttributes[1], itemAttributes[2], itemAttributes[3])
     factory = staticmethod(factory)
