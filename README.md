@@ -30,7 +30,7 @@ When you run this program it will spit out a collection of generated objects in 
 * ```--test```: Test the system to generate a generic collection of each object type.
 
 ## Dependencies:
-* [datetime](https://docs.python.org/2/library/datetime.html):retrieves the date and time from the system.
-* [json](https://docs.python.org/2/library/json.html):Encodes data into object notation objects.
-* [os.path](https://docs.python.org/2/library/os.html):Handles OS level path, file, and directory operations.
-* [argparse](https://docs.python.org/2/library/argparse.html):Parses arguments provided by the user into objects.
+* [datetime](https://docs.python.org/2/library/datetime.html): Retrieves the date and time from the system.
+* [json](https://docs.python.org/2/library/json.html): Encodes data into object notation objects.
+* [os.path](https://docs.python.org/2/library/os.html): Handles OS level path, file, and directory operations.
+* [argparse](https://docs.python.org/2/library/argparse.html): Parses arguments provided by the user into objects.
