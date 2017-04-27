@@ -1,21 +1,19 @@
 from createCollection import createCollection
-from ObjectFactories.albumFactory import AlbumFactory
-from ObjectFactories.bookFactory import BookFactory
-from ObjectFactories.itemFactory import ItemFactory
-from ObjectFactories.movieFactory import MovieFactory
+from ObjectFactories.ItemFactory import ItemFactory
+from DataObjects.Collection import Collection
+import datetime
+import json
 
 def main():
-        createCollection('agarner','books')
-
-        item = ItemFactory.createItem('item1','','')
-        print(item.name)
-        album = AlbumFactory.createAlbum('album1','','','artist1')
-        print(album.name)
-        book = BookFactory.createBook('book1','','','author1')
-        print(book.name)
-        movie = MovieFactory.createMovie('movie1','','','director1')
-        print(movie.name)
-
+        #createCollection('agarner','books')
+        now = datetime.datetime.now()
+        items = []
+        for i in range(0,10):
+            item = ItemFactory.factory('item', [i, 'item' + str(i), now, now])
+            print(item.name)
+            items.append(item)
+        itemCollection = Collection('Items', 'agarner', items)
+        print itemCollection.toJSON()
 
 if __name__ == '__main__':
     main()
