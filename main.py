@@ -14,27 +14,27 @@ def generateArgumentsFromParser():
     return parser.parse_args()
 
 def generateCollection(collectionType, collectionName, username, length):
-    items = []
+    objectArray = []
     now = datetime.datetime.now()
 
     if collectionType.lower() == 'item':
         for i in range(0,length):
             item = ItemFactory.factory('item', [i, 'item' + str(i), now, now])
-            items.append(item)
+            objectArray.append(item)
     elif collectionType.lower() == 'album':
         for i in range(0,length):
             item = ItemFactory.factory('album', [i, 'album' + str(i), now, now, 'artist_' + str(i)])
-            items.append(item)
+            objectArray.append(item)
     elif collectionType.lower() == 'book':
         for i in range(0,length):
             item = ItemFactory.factory('book', [i, 'book' + str(i), now, now, 'author_' + str(i)])
-            items.append(item)
+            objectArray.append(item)
     elif collectionType.lower() == 'movie':
         for i in range(0,length):
             item = ItemFactory.factory('movie', [i, 'movie' + str(i), now, now, 'movie_' + str(i)])
-            items.append(item)
+            objectArray.append(item)
 
-    return Collection(collectionName, username, items)
+    return Collection(collectionName, username, objectArray)
 
 def main():
         arguments = generateArgumentsFromParser()
