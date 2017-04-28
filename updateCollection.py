@@ -1,12 +1,6 @@
 from DataObjects.Collection import Collection
 from ObjectFactories.ItemFactory import ItemFactory
-from collections import OrderedDict
 import json
-
-def main():
-    collectionFileName = 'collections/agarner_collections/agarner_Item_collection.dat'
-    item = ItemFactory.factory('item', [0, 'someItem', 'date', 'date'])
-    updateCollection(collectionFileName, item)
 
 def getCollection(fileName):
     collectionFile = open(fileName, 'r')
@@ -40,12 +34,7 @@ def writeCollectionToFile(fileName, collection):
     collectionFile.write(collection.toJSON())
     collectionFile.close()
 
-
 def updateCollection(fileName, item):
     collection = getCollection(fileName)
     collection.items.append(item)
     writeCollectionToFile(fileName, collection)
-
-
-if __name__ == '__main__':
-    main()
