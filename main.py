@@ -36,7 +36,7 @@ def generateCollection(collectionType, collectionName, username, length):
             item = ItemFactory.factory('movie', [i, 'movie' + str(i), now, now, 'movie_' + str(i)])
             objectArray.append(item)
 
-    return Collection(collectionName, username, objectArray)
+    return Collection(collectionType, collectionName, username, objectArray)
 
 def main():
         arguments = generateArgumentsFromParser()

@@ -1,7 +1,8 @@
 import json
 
 class Collection:
-    def __init__(self, collectionName, username, items):
+    def __init__(self, collectionType, collectionName, username, items):
+        self.collectionType = collectionType
         self.collectionName = collectionName
         self.username = username
         self.items = items
