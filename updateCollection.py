@@ -4,15 +4,14 @@ from collections import OrderedDict
 import json
 
 def main():
-    updateCollection(
-        Collection('item','Items', 'agarner', []),
-        ItemFactory.factory('item', [0, 'someItem', 'date', 'date']),
-        'collections/TestUser_collections/TestUser_album_collection.dat'
-    )
+    collectionFileName = 'collections/agarner_collections/agarner_Item_collection.dat'
+    item = ItemFactory.factory('item', [0, 'someItem', 'date', 'date'])
+    updateCollection(collectionFileName, item)
 
 def getCollection(fileName):
     collectionFile = open(fileName, 'r')
     fileData = json.loads(collectionFile.read())
+    collectionFile.close()
 
     collectionType = fileData['collectionType']
     collectionName = fileData['collectionName']
@@ -34,17 +33,19 @@ def getCollection(fileName):
             item = ItemFactory.factory(collectionType,[value['id'], value['name'], value['addedOn'], value['lastEdit'], value['director']])
             itemArr.append(item)
 
-    collection = Collection(fileData['collectionType'], fileData['collectionName'], fileData['username'], itemArr)
+    return Collection(fileData['collectionType'], fileData['collectionName'], fileData['username'], itemArr)
 
-    print collection.collectionType
-    print collection.collectionName
-    print collection.username
-    print collection.items
+def writeCollectionToFile(fileName, collection):
+    collectionFile = open(fileName, 'w')
+    collectionFile.write(collection.toJSON())
+    collectionFile.close()
 
 
-def updateCollection(collection, item, fileName):
+def updateCollection(fileName, item):
+    collection = getCollection(fileName)
     collection.items.append(item)
-    getCollection(fileName)
+    writeCollectionToFile(fileName, collection)
+
 
 if __name__ == '__main__':
     main()
