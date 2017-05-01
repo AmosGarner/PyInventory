@@ -8,11 +8,9 @@ CONST_OBJECT_TYPES = ['item', 'album', 'book', 'movie']
 
 def generateArgumentsFromParser():
     parser = parser = argparse.ArgumentParser(description="Runs the PyInventory utility for creating a collection of items.")
+    parser.add_argument('--action', dest='action', required=True)
     parser.add_argument('--user', dest='username', required=True)
     parser.add_argument('--type', dest='collectionType', required=True)
-    parser.add_argument('--name', dest='collectionName', required=True)
-    parser.add_argument('--length', dest='length', required=True)
-    parser.add_argument('--test', dest='test', required=False)
     return parser.parse_args()
 
 def generateCollection(collectionType, collectionName, username, length):
