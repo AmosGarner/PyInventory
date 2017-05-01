@@ -21,27 +21,27 @@ def generateFileName(username, collectionName):
 def generateNewCollection(username, collectionType, collectionName):
     return Collection(username, collectionType, collectionName, [])
 
-def writeCollectionToFile(collectionFileName, arguments):
+def writeCollectionToFile(collectionFilePath, arguments):
     collection = generateNewCollection(arguments.username, arguments.collectionType, arguments.collectionName)
-    collectionFile = open(collectionFileName, 'w')
+    collectionFile = open(collectionFilePath, 'w')
     collectionFile.write(collection.toJSON())
     collectionFile.close()
 
 def main():
         arguments = generateArgumentsFromParser()
-        collectionFileName = generateFileName(arguments.username, arguments.collectionName)
+        collectionFilePath = generateFileName(arguments.username, arguments.collectionName)
 
         if arguments.action.lower() == "create":
             createCollectionFile(arguments.username, arguments.collectionName)
-            writeCollectionToFile(collectionFileName, arguments)
+            writeCollectionToFile(collectionFilePath, arguments)
 
         elif arguments.action.lower() == "update":
-            collectionLength = getCollectionLength(collectionFileName)
+            collectionLength = getCollectionLength(collectionFilePath)
             itemDataArr = arguments.itemData.split('~')
             if arguments.collectionType.lower() == "item":
-                updateCollection(collectionFileName, ItemFactory.factory(arguments.collectionType, [collectionLength+1, itemDataArr[0], "date", "date"]))
+                updateCollection(collectionFilePath, ItemFactory.factory(arguments.collectionType, [collectionLength+1, itemDataArr[0], "date", "date"]))
             else:
-                updateCollection(collectionFileName, ItemFactory.factory(arguments.collectionType, [collectionLength+1, itemDataArr[0], "date", "date", itemDataArr[1]]))
+                updateCollection(collectionFilePath, ItemFactory.factory(arguments.collectionType, [collectionLength+1, itemDataArr[0], "date", "date", itemDataArr[1]]))
 
 if __name__ == '__main__':
     main()
