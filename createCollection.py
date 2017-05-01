@@ -2,11 +2,10 @@ import os
 
 CONST_COLLECTIONS_NAME = 'collections'
 
-def createCollection(username, fileName):
-
+def createCollectionFile(username, fileName):
     createCollectionsDirectory(CONST_COLLECTIONS_NAME)
     collectionPath = createCollectionDirectory(username)
-    createCollectionFile(collectionPath, username, fileName)
+    generateCollectionFile(collectionPath, username, fileName)
 
 def createCollectionsDirectory(collectionsName):
     if os.path.isdir(collectionsName) is False and os.path.exists(collectionsName) is False:
@@ -24,7 +23,7 @@ def createCollectionDirectory(username):
             print 'Error: Could not create collections directory for user: %s' %(username)
     return collectionPath
 
-def createCollectionFile(collectionPath, username, fileName):
+def generateCollectionFile(collectionPath, username, fileName):
     try:
         collectionFile = open(collectionPath+'/'+username+'_'+fileName+'_collection.dat', 'w+')
         collectionFile.close()
