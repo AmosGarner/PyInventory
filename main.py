@@ -1,4 +1,5 @@
 from createCollection import createCollectionFile
+from updateCollection import updateCollection, getCollectionLength
 from ObjectFactories.ItemFactory import ItemFactory
 from DataObjects.Collection import Collection
 import datetime, json, os.path, argparse
@@ -34,7 +35,8 @@ def main():
             writeCollectionToFile(collectionFileName, arguments)
 
         elif arguments.action.lower() == "update":
-            return None
+            collectionLength = getCollectionLength(collectionFileName)
+            updateCollection(collectionFileName, ItemFactory.factory(arguments.collectionType, [collectionLength+1, "Name", "date", "date"]))
 
 if __name__ == '__main__':
     main()
