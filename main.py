@@ -12,6 +12,7 @@ def generateArgumentsFromParser():
     parser.add_argument('--user', dest='username', required=True)
     parser.add_argument('--name', dest='collectionName', required=True)
     parser.add_argument('--type', dest='collectionType', required=False)
+    parser.add_argument('--input', dest='itemData', required=False)
     return parser.parse_args()
 
 def generateFileName(username, collectionName):
@@ -36,7 +37,8 @@ def main():
 
         elif arguments.action.lower() == "update":
             collectionLength = getCollectionLength(collectionFileName)
-            updateCollection(collectionFileName, ItemFactory.factory(arguments.collectionType, [collectionLength+1, "Name", "date", "date"]))
+            itemDataArr = arguments.itemData.split('~')
+            updateCollection(collectionFileName, ItemFactory.factory(arguments.collectionType, [collectionLength+1, itemDataArr[0], "date", "date"]))
 
 if __name__ == '__main__':
     main()
