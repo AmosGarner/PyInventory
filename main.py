@@ -19,16 +19,19 @@ def generateFileName(username, collectionName):
 def generateNewCollection(username, collectionType, collectionName):
     return Collection(username, collectionType, collectionName, [])
 
+def writeCollectionToFile(collectionFileName, arguments):
+    collection = generateNewCollection(arguments.username, arguments.collectionType, arguments.collectionName)
+    collectionFile = open(collectionFileName, 'w')
+    collectionFile.write(collection.toJSON())
+    collectionFile.close()
+
 def main():
         arguments = generateArgumentsFromParser()
         collectionFileName = generateFileName(arguments.username, arguments.collectionName)
 
         if arguments.action.lower() == "create":
             createCollectionFile(arguments.username, arguments.collectionName)
-            collection = generateNewCollection(arguments.username, arguments.collectionType, arguments.collectionName)
-            collectionFile = open(collectionFileName, 'w')
-            collectionFile.write(collection.toJSON())
-            collectionFile.close()
+            writeCollectionToFile(collectionFileName, arguments)
 
         elif arguments.action.lower() == "update":
             return None
