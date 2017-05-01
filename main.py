@@ -21,8 +21,8 @@ def generateFileName(username, collectionName):
 def generateNewCollection(username, collectionType, collectionName):
     return Collection(username, collectionType, collectionName, [])
 
-def writeCollectionToFile(collectionFilePath, arguments):
-    collection = generateNewCollection(arguments.username, arguments.collectionType, arguments.collectionName)
+def writeCollectionDataToFile(collectionFilePath, arguments):
+    collection = generateNewCollection(arguments.username, arguments.collectionName, arguments.collectionType)
     collectionFile = open(collectionFilePath, 'w')
     collectionFile.write(collection.toJSON())
     collectionFile.close()
@@ -33,7 +33,7 @@ def main():
 
         if arguments.action.lower() == "create":
             createCollectionFile(arguments.username, arguments.collectionName)
-            writeCollectionToFile(collectionFilePath, arguments)
+            writeCollectionDataToFile(collectionFilePath, arguments)
 
         elif arguments.action.lower() == "update":
             collectionLength = getCollectionLength(collectionFilePath)

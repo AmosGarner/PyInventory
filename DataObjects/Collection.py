@@ -1,10 +1,10 @@
 import json
 
 class Collection:
-    def __init__(self, collectionType, collectionName, username, items):
-        self.collectionType = collectionType
-        self.collectionName = collectionName
+    def __init__(self, username, collectionName, collectionType, items = []):
         self.username = username
+        self.collectionName = collectionName
+        self.collectionType = collectionType
         self.items = items
 
     def toJSON(self):
