@@ -38,7 +38,10 @@ def main():
         elif arguments.action.lower() == "update":
             collectionLength = getCollectionLength(collectionFileName)
             itemDataArr = arguments.itemData.split('~')
-            updateCollection(collectionFileName, ItemFactory.factory(arguments.collectionType, [collectionLength+1, itemDataArr[0], "date", "date"]))
+            if arguments.collectionType.lower() == "item":
+                updateCollection(collectionFileName, ItemFactory.factory(arguments.collectionType, [collectionLength+1, itemDataArr[0], "date", "date"]))
+            else:
+                updateCollection(collectionFileName, ItemFactory.factory(arguments.collectionType, [collectionLength+1, itemDataArr[0], "date", "date", itemDataArr[1]]))
 
 if __name__ == '__main__':
     main()

@@ -4,7 +4,9 @@ import json
 
 def updateCollection(fileName, item):
     collection = getCollection(fileName)
+    print(collection.toJSON())
     collection.items.append(item)
+    print(collection.toJSON())
     writeCollectionToFile(fileName, collection)
 
 def getCollection(fileName):
