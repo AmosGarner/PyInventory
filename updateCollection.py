@@ -4,9 +4,7 @@ import json
 
 def updateCollection(fileName, item):
     collection = getCollection(fileName)
-    print(collection.toJSON())
     collection.items.append(item)
-    print(collection.toJSON())
     writeCollectionToFile(fileName, collection)
 
 def getCollection(fileName):
@@ -34,7 +32,7 @@ def getCollection(fileName):
             item = ItemFactory.factory(collectionType,[value['id'], value['name'], value['addedOn'], value['lastEdit'], value['director']])
             itemArr.append(item)
 
-    return Collection(fileData['collectionType'], fileData['collectionName'], fileData['username'], itemArr)
+    return Collection(fileData['username'], fileData['collectionName'], fileData['collectionType'], itemArr)
 
 def getCollectionLength(fileName):
     collectionLength = len(getCollection(fileName).items)
