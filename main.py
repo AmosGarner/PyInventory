@@ -32,20 +32,29 @@ def createCollectionsDirectory():
     if os.path.isdir(CONST_COLLECTIONS_NAME) is False and os.path.exists(CONST_COLLECTIONS_NAME) is False:
         try:
             os.makedirs(CONST_COLLECTIONS_NAME)
-        except:
+        except OSError:
             print 'Error: Could not create directory: %s' %(collectionsName)
+
+def createCollectionDirectory(username):
+    collectionPath = CONST_COLLECTIONS_NAME+'/'+username+'_collections'
+    if os.path.isdir(collectionPath) is False and os.path.exists(collectionPath) is False:
+        try:
+            os.makedirs(collectionPath)
+        except OSError:
+            print 'Error: Could not create ' + CONST_COLLECTIONS_NAME +' directory for user: %s' %(username)
 
 def main():
         arguments = generateArgumentsFromParser()
 
         if arguments.action.lower() == "install":
             createCollectionsDirectory()
+            createCollectionDirectory(arguments.username)
             return None
 
         collectionFilePath = generateFileName(arguments.username, arguments.collectionName)
 
         if arguments.action.lower() == "create_collection":
-            createCollectionFile(arguments.username, arguments.collectionName)
+            createCollectionFile(collectionFilePath)
             writeCollectionDataToFile(collectionFilePath, arguments)
 
         elif arguments.action.lower() == "insert_item":
