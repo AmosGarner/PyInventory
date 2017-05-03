@@ -1,5 +1,6 @@
 from createCollection import createCollectionFile
 from updateCollection import updateCollection, getCollectionLength
+from removeCollection import removeCollection
 from ObjectFactories.ItemFactory import ItemFactory
 from DataObjects.Collection import Collection
 import datetime, json, os.path, argparse
@@ -43,6 +44,8 @@ def main():
                 updateCollection(collectionFilePath, ItemFactory.factory(arguments.collectionType, [collectionLength+1, itemDataArr[0], str(dateTime), str(dateTime)]))
             else:
                 updateCollection(collectionFilePath, ItemFactory.factory(arguments.collectionType, [collectionLength+1, itemDataArr[0], str(dateTime), str(dateTime), itemDataArr[1]]))
+        elif arguments.action.lower() == "remove":
+            removeCollection(collectionFilePath)
 
 if __name__ == '__main__':
     main()
