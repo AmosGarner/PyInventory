@@ -12,6 +12,9 @@ def getCollection(fileName):
     fileData = json.loads(collectionFile.read())
     collectionFile.close()
 
+    return generateCollectionOnFileData(fileData)
+
+def generateCollectionOnFileData(fileData):
     collectionType = fileData['collectionType']
     collectionName = fileData['collectionName']
     username = fileData['username']
