@@ -1,6 +1,7 @@
 from createCollection import createCollectionFile
 from updateCollection import updateCollection, getCollectionLength
 from removeCollection import removeCollection
+from editCollection import editCollection
 from ObjectFactories.ItemFactory import ItemFactory
 from DataObjects.Collection import Collection
 import datetime, json, os, argparse
@@ -56,6 +57,9 @@ def main():
         if arguments.action.lower() == "create_collection":
             createCollectionFile(collectionFilePath)
             writeCollectionDataToFile(collectionFilePath, arguments)
+
+        elif arguments.action.lower() == "edit_collection":
+            editCollection(collectionFilePath, "New Collection Name")
 
         elif arguments.action.lower() == "insert_item":
             collectionLength = getCollectionLength(collectionFilePath)

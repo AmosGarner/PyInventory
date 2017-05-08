@@ -2,13 +2,13 @@ from DataObjects.Collection import Collection
 from ObjectFactories.ItemFactory import ItemFactory
 import json
 
-def updateCollection(fileName, item):
-    collection = getCollection(fileName)
+def updateCollection(collectionFilePath, item):
+    collection = getCollection(collectionFilePath)
     collection.items.append(item)
-    writeCollectionToFile(fileName, collection)
+    writeCollectionToFile(collectionFilePath, collection)
 
-def getCollection(fileName):
-    collectionFile = open(fileName, 'r')
+def getCollection(collectionFilePath):
+    collectionFile = open(collectionFilePath, 'r')
     fileData = json.loads(collectionFile.read())
     collectionFile.close()
 
@@ -37,14 +37,14 @@ def generateCollectionOnFileData(fileData):
 
     return Collection(fileData['username'], fileData['collectionName'], fileData['collectionType'], itemArr)
 
-def getCollectionLength(fileName):
-    collectionLength = len(getCollection(fileName).items)
+def getCollectionLength(collectionFilePath):
+    collectionLength = len(getCollection(collectionFilePath).items)
     if collectionLength <= 0:
         return 0
     else:
         return collectionLength
 
-def writeCollectionToFile(fileName, collection):
-    collectionFile = open(fileName, 'w')
+def writeCollectionToFile(collectionFilePath, collection):
+    collectionFile = open(collectionFilePath, 'w')
     collectionFile.write(collection.toJSON())
     collectionFile.close()
