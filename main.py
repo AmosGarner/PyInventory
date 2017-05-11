@@ -14,7 +14,7 @@ def generateArgumentsFromParser():
     parser.add_argument('--user', dest='username', required=False)
     parser.add_argument('--name', dest='collectionName', required=False)
     parser.add_argument('--type', dest='collectionType', required=False)
-    parser.add_argument('--input', dest='itemData', required=False)
+    parser.add_argument('--input', dest='inputData', required=False)
     return parser.parse_args()
 
 def generateFileName(username, collectionName):
@@ -59,16 +59,16 @@ def main():
             writeCollectionDataToFile(collectionFilePath, arguments)
 
         elif arguments.action.lower() == "edit_collection":
-            editCollection(collectionFilePath, "New Collection Name")
+            editCollection(collectionFilePath, arguments.inputData)
 
         elif arguments.action.lower() == "insert_item":
             collectionLength = getCollectionLength(collectionFilePath)
-            itemDataArr = arguments.itemData.split('~')
+            inputDataArr = arguments.inputData.split('~')
             dateTime = datetime.datetime.now()
             if arguments.collectionType.lower() == "item":
-                updateCollection(collectionFilePath, ItemFactory.factory(arguments.collectionType, [collectionLength+1, itemDataArr[0], str(dateTime), str(dateTime)]))
+                updateCollection(collectionFilePath, ItemFactory.factory(arguments.collectionType, [collectionLength+1, inputDataArr[0], str(dateTime), str(dateTime)]))
             else:
-                updateCollection(collectionFilePath, ItemFactory.factory(arguments.collectionType, [collectionLength+1, itemDataArr[0], str(dateTime), str(dateTime), itemDataArr[1]]))
+                updateCollection(collectionFilePath, ItemFactory.factory(arguments.collectionType, [collectionLength+1, inputDataArr[0], str(dateTime), str(dateTime), inputDataArr[1]]))
 
         elif arguments.action.lower() == "remove_collection":
             removeCollection(collectionFilePath)
