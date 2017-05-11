@@ -1,3 +1,4 @@
 *.dat
 *.pyc
 /collections
+.ds_store
