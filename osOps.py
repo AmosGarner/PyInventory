@@ -14,6 +14,14 @@ def createFile(filePath):
     except IOError:
         print "Error: could not create file at location: " + filePath
 
+def openFile(filePath):
+    try:
+        fileEntity = open(filePath, 'r')
+        return fileEntity
+    except IOError:
+        print "Error: could not open file at location: " + filePath
+        return False
+
 def removeFile(filePath):
     try:
         os.remove(filePath)
@@ -27,4 +35,9 @@ def removeDirectory(directoryPath):
         print "Error: could not remove directory at location: " + directoryPath
 
 def getFileContents(filePath):
-    return None
+    try:
+        fileData = openFile(filePath).read()
+        return fileData
+    except IOError:
+        print "Error: could find file data located in file at location: " + filePath
+        return False
