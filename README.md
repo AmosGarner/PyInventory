@@ -33,12 +33,12 @@ When you run this program it will spit out a collection of generated objects in 
     * insert_item: Insert's an item into a user's collection.
         * EX:   ```python main.py --action insert_item --user bburger --name items --type item --input "Item Name"```
 * ```--user```: The username set by the user
+* ```--name```: The name of the collection
 * ```--type```: The type of objects this collection will contain
     * Item: Generic item
     * Album
     * Book
     * Movie
-* ```--name```: The name of the collection
 * ```--input```: Then length of the generated collection.
 
 ## Dependencies:
