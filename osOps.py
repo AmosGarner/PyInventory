@@ -22,6 +22,14 @@ def openFile(filePath):
         print "Error: could not open file at location: " + filePath
         return False
 
+def getFileContents(filePath):
+    try:
+        fileData = openFile(filePath).read()
+        return fileData
+    except IOError:
+        print "Error: could find file data located in file at location: " + filePath
+        return False
+
 def removeFile(filePath):
     try:
         os.remove(filePath)
@@ -33,11 +41,3 @@ def removeDirectory(directoryPath):
         os.removedirs(directoryPath)
     except OSError:
         print "Error: could not remove directory at location: " + directoryPath
-
-def getFileContents(filePath):
-    try:
-        fileData = openFile(filePath).read()
-        return fileData
-    except IOError:
-        print "Error: could find file data located in file at location: " + filePath
-        return False
