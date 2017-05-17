@@ -38,3 +38,8 @@ def writeCollectionToFile(collectionFilePath, collection):
     collectionFile = open(collectionFilePath, 'w+')
     collectionFile.write(collection.toJSON())
     collectionFile.close()
+
+def updateCollection(collectionFilePath, item):
+    collection = getCollection(collectionFilePath)
+    collection.items.append(item)
+    writeCollectionToFile(collectionFilePath, collection)
