@@ -4,6 +4,7 @@ from removeCollection import removeCollection
 from editCollection import editCollection
 from ObjectFactories.ItemFactory import ItemFactory
 from DataObjects.Collection import Collection
+from osOps import *
 import datetime, json, os, argparse
 
 CONST_COLLECTIONS_NAME = 'collections'

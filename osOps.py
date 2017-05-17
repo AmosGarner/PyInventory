@@ -1,3 +1,5 @@
+import os
+
 def createFile(directoryPath, fileName):
     return None
 
