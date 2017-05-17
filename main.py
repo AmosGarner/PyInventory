@@ -54,7 +54,7 @@ def main():
                 updateCollection(collectionFilePath, ItemFactory.factory(arguments.collectionType, [collectionLength+1, inputDataArr[0], str(dateTime), str(dateTime), inputDataArr[1]]))
 
         elif arguments.action.lower() == "remove_collection":
-            removeCollection(collectionFilePath)
+            removeFile(collectionFilePath)
 
 if __name__ == '__main__':
     main()
