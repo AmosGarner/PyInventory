@@ -42,14 +42,14 @@ def writeCollectionToFile(collectionFilePath, collection):
 
 def editCollection(collection, collectionFilePath, newCollectionName):
     collection.collectionName = newCollectionName
+
     pathArr = collectionFilePath.split('/')
     fileNameArr = pathArr[2].split('_')
     fileNameArr[1] = newCollectionName
     newFileName = '_'.join(fileNameArr)
-    path = pathArr[0] + '/' + pathArr[1] + '/' + newFileName
-    newCollectionsFile = open(path, 'w+')
-    newCollectionsFile.write(collection.toJSON())
-    newCollectionsFile.close()
+    newCollectionFilePath = pathArr[0] + '/' + pathArr[1] + '/' + newFileName
+
+    writeCollectionToFile(newCollectionFilePath, collection)
 
 def updateCollection(collectionFilePath, item):
     collection = getCollection(collectionFilePath)
