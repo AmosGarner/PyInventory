@@ -30,3 +30,8 @@ def generateCollectionOnFileData(fileData):
             itemArr.append(item)
 
     return Collection(fileData['username'], fileData['collectionName'], fileData['collectionType'], itemArr)
+
+def writeCollectionToFile(collectionFilePath, collection):
+    collectionFile = open(collectionFilePath, 'w+')
+    collectionFile.write(collection.toJSON())
+    collectionFile.close()

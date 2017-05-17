@@ -20,16 +20,10 @@ def generateArgumentsFromParser():
     return parser.parse_args()
 
 def generateFileName(username, collectionName):
-    return CONST_COLLECTIONS_NAME + "/" + username + "_" + CONST_COLLECTIONS_NAME + "/" + username + "_" + collectionName + "_collection.dat"
+    return CONST_COLLECTIONS_NAME + "/" + username + "/" + username + "_" + collectionName + "_collection.dat"
 
 def generateNewCollection(username, collectionType, collectionName):
     return Collection(username, collectionType, collectionName, [])
-
-def writeCollectionDataToFile(collectionFilePath, arguments):
-    collection = generateNewCollection(arguments.username, arguments.collectionName, arguments.collectionType)
-    collectionFile = open(collectionFilePath, 'w')
-    collectionFile.write(collection.toJSON())
-    collectionFile.close()
 
 def installCollectionsDirectory(username):
     createDirectory(CONST_COLLECTIONS_NAME + '/' + username)
@@ -44,8 +38,8 @@ def main():
         collectionFilePath = generateFileName(arguments.username, arguments.collectionName)
 
         if arguments.action.lower() == "create_collection":
-            createCollectionFile(collectionFilePath)
-            writeCollectionDataToFile(collectionFilePath, arguments)
+            baseCollection = Collection(arguments.username, arguments.collectionName, arguments.collectionType)
+            writeCollectionToFile(collectionFilePath, baseCollection)
 
         elif arguments.action.lower() == "edit_collection":
             editCollection(collectionFilePath, arguments.inputData)
