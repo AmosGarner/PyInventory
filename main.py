@@ -1,11 +1,8 @@
-from updateCollection import updateCollection, getCollectionLength
-from removeCollection import removeCollection
 from editCollection import editCollection
 from ObjectFactories.ItemFactory import ItemFactory
-from DataObjects.Collection import Collection
 from osOps import *
 from collectionOps import *
-import datetime, json, os, argparse
+import datetime, argparse
 
 CONST_COLLECTIONS_NAME = 'collections'
 
@@ -20,9 +17,6 @@ def generateArgumentsFromParser():
 
 def generateFileName(username, collectionName):
     return CONST_COLLECTIONS_NAME + "/" + username + "/" + username + "_" + collectionName + "_collection.dat"
-
-def generateNewCollection(username, collectionType, collectionName):
-    return Collection(username, collectionType, collectionName, [])
 
 def installCollectionsDirectory(username):
     createDirectory(CONST_COLLECTIONS_NAME + '/' + username)
