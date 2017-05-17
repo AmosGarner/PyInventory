@@ -33,7 +33,7 @@ def main():
         if arguments.action.lower() == "install":
             installCollectionsDirectory(arguments.username)
             return None
-
+        #placed this code here because I want this to run only if the user is not installing the program directories.
         collectionFilePath = generateFileName(arguments.username, arguments.collectionName)
 
         if arguments.action.lower() == "create_collection":
