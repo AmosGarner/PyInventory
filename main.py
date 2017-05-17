@@ -31,27 +31,14 @@ def writeCollectionDataToFile(collectionFilePath, arguments):
     collectionFile.write(collection.toJSON())
     collectionFile.close()
 
-def createCollectionsDirectory():
-    if os.path.isdir(CONST_COLLECTIONS_NAME) is False and os.path.exists(CONST_COLLECTIONS_NAME) is False:
-        try:
-            os.makedirs(CONST_COLLECTIONS_NAME)
-        except OSError:
-            print 'Error: Could not create directory: %s' %(collectionsName)
-
-def createCollectionDirectory(username):
-    collectionPath = CONST_COLLECTIONS_NAME+'/'+username+'_collections'
-    if os.path.isdir(collectionPath) is False and os.path.exists(collectionPath) is False:
-        try:
-            os.makedirs(collectionPath)
-        except OSError:
-            print 'Error: Could not create ' + CONST_COLLECTIONS_NAME +' directory for user: %s' %(username)
+def createCollectionsDirectory(username):
+    createDirectory(CONST_COLLECTIONS_NAME + '/' + username)
 
 def main():
         arguments = generateArgumentsFromParser()
 
         if arguments.action.lower() == "install":
-            createCollectionsDirectory()
-            createCollectionDirectory(arguments.username)
+            createCollectionsDirectory(arguments.username)
             return None
 
         collectionFilePath = generateFileName(arguments.username, arguments.collectionName)
