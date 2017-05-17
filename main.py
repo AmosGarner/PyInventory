@@ -31,14 +31,14 @@ def writeCollectionDataToFile(collectionFilePath, arguments):
     collectionFile.write(collection.toJSON())
     collectionFile.close()
 
-def createCollectionsDirectory(username):
+def installCollectionsDirectory(username):
     createDirectory(CONST_COLLECTIONS_NAME + '/' + username)
 
 def main():
         arguments = generateArgumentsFromParser()
 
         if arguments.action.lower() == "install":
-            createCollectionsDirectory(arguments.username)
+            installCollectionsDirectory(arguments.username)
             return None
 
         collectionFilePath = generateFileName(arguments.username, arguments.collectionName)
