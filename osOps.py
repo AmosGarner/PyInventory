@@ -14,11 +14,17 @@ def createFile(filePath):
     except IOError:
         print "Error: could not create file at location: " + filePath
 
-def deleteFile(filePath):
-    return None
+def removeFile(filePath):
+    try:
+        os.remove(filePath)
+    except OSError:
+        print "Error: could not remove file at location: " + filePath
 
-def deleteDirectory(directoryPath):
-    return None
+def removeDirectory(directoryPath):
+    try:
+        os.removedirs(directoryPath)
+    except OSError:
+        print "Error: could not remove directory at location: " + directoryPath
 
 def getFileContents(filePath):
     return None
