@@ -1,4 +1,3 @@
-from createCollection import createCollectionFile
 from updateCollection import updateCollection, getCollectionLength
 from removeCollection import removeCollection
 from editCollection import editCollection
