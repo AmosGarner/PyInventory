@@ -1,10 +1,13 @@
+from osOps import getFileContents
 from DataObjects.Collection import Collection
+from ObjectFactories.ItemFactory import ItemFactory
 import json
 
-def getCollection(fileData):
+def getCollection(filePath):
     try:
-        fileData = json.loads(fileData)
-        return generateCollectionOnFileData(fileData)
+        fileData = getFileContents(filePath)
+        fileJSON = json.loads(fileData)
+        return generateCollectionOnFileData(fileJSON)
     except:
         print('Error: Could not load collection data from file.')
 

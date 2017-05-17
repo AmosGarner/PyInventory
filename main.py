@@ -44,12 +44,13 @@ def main():
             editCollection(collectionFilePath, arguments.inputData)
 
         elif arguments.action.lower() == "insert_item":
-            collectionLength = getCollectionLength(collectionFilePath)
-            inputDataArr = arguments.inputData.split('~')
+            collectionLength = len(getCollection(collectionFilePath).items)
             dateTime = datetime.datetime.now()
+
             if arguments.collectionType.lower() == "item":
-                updateCollection(collectionFilePath, ItemFactory.factory(arguments.collectionType, [collectionLength+1, inputDataArr[0], str(dateTime), str(dateTime)]))
+                updateCollection(collectionFilePath, ItemFactory.factory(arguments.collectionType, [collectionLength+1, arguments.inputData, str(dateTime), str(dateTime)]))
             else:
+                inputDataArr = arguments.inputData.split('~')
                 updateCollection(collectionFilePath, ItemFactory.factory(arguments.collectionType, [collectionLength+1, inputDataArr[0], str(dateTime), str(dateTime), inputDataArr[1]]))
 
         elif arguments.action.lower() == "remove_collection":
