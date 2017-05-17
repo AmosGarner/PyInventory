@@ -1,4 +1,3 @@
-from editCollection import editCollection
 from ObjectFactories.ItemFactory import ItemFactory
 from osOps import *
 from collectionOps import *
@@ -27,7 +26,7 @@ def main():
         if arguments.action.lower() == "install":
             installCollectionsDirectory(arguments.username)
             return None
-            
+
         collectionFilePath = generateFileName(arguments.username, arguments.collectionName)
 
         if arguments.action.lower() == "create_collection":
@@ -35,7 +34,9 @@ def main():
             writeCollectionToFile(collectionFilePath, baseCollection)
 
         elif arguments.action.lower() == "edit_collection":
-            editCollection(collectionFilePath, arguments.inputData)
+            collection = getCollection(collectionFilePath)
+            removeFile(collectionFilePath)
+            editCollection(collection, collectionFilePath, arguments.inputData)
 
         elif arguments.action.lower() == "insert_item":
             collectionLength = len(getCollection(collectionFilePath).items)

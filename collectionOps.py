@@ -2,6 +2,7 @@ from osOps import getFileContents
 from DataObjects.Collection import Collection
 from ObjectFactories.ItemFactory import ItemFactory
 import json
+import datetime
 
 def getCollection(filePath):
     try:
@@ -38,6 +39,17 @@ def writeCollectionToFile(collectionFilePath, collection):
     collectionFile = open(collectionFilePath, 'w+')
     collectionFile.write(collection.toJSON())
     collectionFile.close()
+
+def editCollection(collection, collectionFilePath, newCollectionName):
+    collection.collectionName = newCollectionName
+    pathArr = collectionFilePath.split('/')
+    fileNameArr = pathArr[2].split('_')
+    fileNameArr[1] = newCollectionName
+    newFileName = '_'.join(fileNameArr)
+    path = pathArr[0] + '/' + pathArr[1] + '/' + newFileName
+    newCollectionsFile = open(path, 'w+')
+    newCollectionsFile.write(collection.toJSON())
+    newCollectionsFile.close()
 
 def updateCollection(collectionFilePath, item):
     collection = getCollection(collectionFilePath)
