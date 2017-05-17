@@ -1,7 +1,11 @@
 import os
 
 def createDirectory(directoryPath):
-    return None
+    if os.path.isdir(directoryPath) is False and os.path.exists(directoryPath) is False:
+        try:
+            os.makedirs(directoryPath)
+        except OSError:
+            print 'Error: Could not create directory at location: ' + directoryPath
 
 def createFile(filePath):
     try:
