@@ -1,10 +1,14 @@
 import os
 
-def createFile(directoryPath, fileName):
-    return None
-
 def createDirectory(directoryPath):
     return None
+
+def createFile(filePath):
+    try:
+        createdFile = open(filePath, 'w+')
+        createdFile.close()
+    except IOError:
+        print "Error: could not create file at location: " + filePath
 
 def getFileContents(filePath):
     return None
