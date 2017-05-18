@@ -56,6 +56,17 @@ def main():
 
             writeCollectionToFile(collectionFilePath, collection)
 
+        elif arguments.action.lower() == "edit_item":
+            inputDataArr = arguments.inputData.split('~')
+            dateTime = datetime.datetime.now()
+
+            if arguments.collectionType.lower() == "item":
+                updatedItem = ItemFactory.factory(arguments.collectionType, [inputDataArr[0], inputDataArr[1], str(dateTime), str(dateTime)])
+            else:
+                updatedItem = ItemFactory.factory(arguments.collectionType, [inputDataArr[0], inputDataArr[1], str(dateTime), str(dateTime), inputDataArr[2]])
+            collection = editItem(getCollection(collectionFilePath), int(inputDataArr[0]), updatedItem)
+            writeCollectionToFile(collectionFilePath, collection)
+
         elif arguments.action.lower() == "remove_item":
             collection = removeItem(getCollection(collectionFilePath), int(arguments.inputData))
             writeCollectionToFile(collectionFilePath, collection)
