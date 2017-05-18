@@ -36,9 +36,9 @@ Proof of concept for a python driven Collection Tracking System (ColTS) that man
 * Edit an Item
     * Command: ```python main.py --action edit_item --user "[Username]" --name "[Collection Name]" --type [ItemType] --input "[Item ID]"~"[Item Name]"~"[Special Attribute]"```
 * Remove an Item
-    * Command: ```python main.py --action remove_item --user "[Username]" --name "[Collection Name]" --type [ItemType] --input "[Item ID]"
+    * Command: ```python main.py --action remove_item --user "[Username]" --name "[Collection Name]" --type [ItemType] --input "[Item ID]"```
 
-## Command Parameters:
+### Command Parameters:
 * ```--action```: Action that the script is going to take when running
     * install
     * create_collection
@@ -58,7 +58,7 @@ Proof of concept for a python driven Collection Tracking System (ColTS) that man
 * ```--input```: Values to be added to the operation.
     * Values are separated with the Tilda (```~```) symbol and are in some cases optional.
 
-## Program Dependencies:
+### Program Dependencies:
 * [datetime](https://docs.python.org/2/library/datetime.html): Retrieves the date and time from the system.
 * [json](https://docs.python.org/2/library/json.html): Encodes data into object notation objects.
 * [os.path](https://docs.python.org/2/library/os.html): Handles OS level path, file, and directory operations.
