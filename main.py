@@ -39,6 +39,9 @@ def main():
             removeFile(collectionFilePath)
             editCollection(collection, collectionFilePath, arguments.inputData)
 
+        elif arguments.action.lower() == "remove_collection":
+            removeFile(collectionFilePath)
+
         elif arguments.action.lower() == "insert_item":
             collectionLength = len(getCollection(collectionFilePath).items)
             dateTime = datetime.datetime.now()
@@ -53,8 +56,7 @@ def main():
 
             writeCollectionToFile(collectionFilePath, collection)
 
-        elif arguments.action.lower() == "remove_collection":
-            removeFile(collectionFilePath)
+
 
 if __name__ == '__main__':
     main()
