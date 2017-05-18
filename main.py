@@ -46,28 +46,30 @@ def main():
             removeFile(collectionFilePath)
 
         elif arguments.action.lower() == "insert_item":
+            collection = getCollection(collectionFilePath)
             collectionLength = len(getCollection(collectionFilePath).items)
             dateTime = datetime.datetime.now()
 
-            if arguments.collectionType.lower() == "item":
-                newItem = ItemFactory.factory(arguments.collectionType, [collectionLength+1, arguments.inputData, str(dateTime), str(dateTime)])
+            if collection.collectionType.lower() == "item":
+                newItem = ItemFactory.factory(collection.collectionType, [collectionLength+1, arguments.inputData, str(dateTime), str(dateTime)])
                 collection = insertItem(getCollection(collectionFilePath), newItem)
             else:
                 inputDataArr = arguments.inputData.split('~')
-                newItem = ItemFactory.factory(arguments.collectionType, [collectionLength+1, inputDataArr[0], str(dateTime), str(dateTime), inputDataArr[1]])
+                newItem = ItemFactory.factory(collection.collectionType, [collectionLength+1, inputDataArr[0], str(dateTime), str(dateTime), inputDataArr[1]])
                 collection = insertItem(getCollection(collectionFilePath), newItem)
 
             writeCollectionToFile(collectionFilePath, collection)
 
         elif arguments.action.lower() == "edit_item":
+            collection = getCollection(collectionFilePath)
             inputDataArr = arguments.inputData.split('~')
             dateTime = datetime.datetime.now()
 
-            if arguments.collectionType.lower() == "item":
-                updatedItem = ItemFactory.factory(arguments.collectionType, [inputDataArr[0], inputDataArr[1], str(dateTime), str(dateTime)])
+            if collection.collectionType.lower() == "item":
+                updatedItem = ItemFactory.factory(collection.collectionType, [inputDataArr[0], inputDataArr[1], str(dateTime), str(dateTime)])
             else:
-                updatedItem = ItemFactory.factory(arguments.collectionType, [inputDataArr[0], inputDataArr[1], str(dateTime), str(dateTime), inputDataArr[2]])
-            collection = editItem(getCollection(collectionFilePath), int(inputDataArr[0]), updatedItem)
+                updatedItem = ItemFactory.factory(collection.collectionType, [inputDataArr[0], inputDataArr[1], str(dateTime), str(dateTime), inputDataArr[2]])
+            collection = editItem(collection, int(inputDataArr[0]), updatedItem)
             writeCollectionToFile(collectionFilePath, collection)
 
         elif arguments.action.lower() == "remove_item":
