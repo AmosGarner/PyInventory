@@ -21,7 +21,7 @@ Proof of concept for a python driven Collection Tracking System (ColTS) that man
 ### Feature Commands and Examples:
 #### Collection Features:
 * Create a Collection
-    * Command: ```python main.py --action create_collection --user "[Username]" --name "[Collection Name]" --type item```
+    * Command: ```python main.py --action create_collection --user "[Username]" --name "[Collection Name]" --type [ItemType]```
 * Edit a Collection
     * Command: ```python main.py --action edit_collection --user "[Username]" --name "[Collection Name]" --input "[New Collection Name]"```
 * Remove a Collection
@@ -29,9 +29,12 @@ Proof of concept for a python driven Collection Tracking System (ColTS) that man
 * Display a Collection
     * Command: ```python main.py --action display_collection --user "[Username]" --name "[Collection Name]"```
 #### Item Features:
-* Create an Item
+* Insert an Item
+    * Command: ```python main.py --action insert_item --user "[Username]" --name "[Collection Name]" --type [ItemType] --input "[Item Name]"~"[Special Attribute]"```
 * Edit an Item
+    * Command: ```python main.py --action edit_item --user "[Username]" --name "[Collection Name]" --type [ItemType] --input "[Item ID]"~"[Item Name]"~"[Special Attribute]"```
 * Remove an Item
+    * Command: ```python main.py --action remove_item --user "[Username]" --name "[Collection Name]" --type [ItemType] --input "[Item ID]"
 
 ## Parameters:
 * ```--action```: Action that the script is going to take when running
