@@ -18,7 +18,8 @@ Proof of concept for a python driven Collection Tracking System (ColTS) that man
 * Create, Display, Edit, and Remove collections of items.
 * Create, Remove, and Edit items in a user's collection.
 
-### Feature Commands and Examples:
+### Feature Commands:
+
 #### Collection Features:
 * Create a Collection
     * Command: ```python main.py --action create_collection --user "[Username]" --name "[Collection Name]" --type [ItemType]```
@@ -28,6 +29,7 @@ Proof of concept for a python driven Collection Tracking System (ColTS) that man
     * Command: ```python main.py --action remove_collection --user "[Username]" --name "[Collection Name]"```
 * Display a Collection
     * Command: ```python main.py --action display_collection --user "[Username]" --name "[Collection Name]"```
+
 #### Item Features:
 * Insert an Item
     * Command: ```python main.py --action insert_item --user "[Username]" --name "[Collection Name]" --type [ItemType] --input "[Item Name]"~"[Special Attribute]"```
