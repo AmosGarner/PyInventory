@@ -7,17 +7,20 @@ Proof of concept for a python driven Collection Tracking System (ColTS) that man
 * Author: Amos Garner
 * License: MIT
 
-## Install Commands:
-Clone project repository into project directory:
-```git clone git@github.com:AmosGarner/PyInventory.git```
+## Installation Instructions:
+1.  Clone Repository:
+``` git clone git@github.com:AmosGarner/PyInventory.git ```
+2. Run the install command
+```python main.py --action install --user [Username] ```
+##### The bracket ```[]``` symbols wrapping a value means that value is a variable and can be customized
 
-## How to run:
-```python main.py --user [Username] --type [Item Type] --name [Collection Name] --length [Collection Length]```
+## Program Features
+* Create, Display, Edit, and Remove collections of items.
+* Create, Remove, and Edit items in a user's collection.
 
-EX: ```python main.py --user jsmith --name item --name Items --length 10```
-
-When you run this program it will spit out a collection of generated objects in the new ```/collections``` directory created in the project dir.
-
+###Commands and Examples
+* Create a Collection
+    * Command: python main.py --action create_collection --user "[Username]" --name "[Collection Name]" --type item
 ## Parameters:
 * ```--action```: Action that the script is going to take when running
     * ### Collection Commands:
