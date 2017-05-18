@@ -9,18 +9,30 @@ Proof of concept for a python driven Collection Tracking System (ColTS) that man
 
 ## Installation Instructions:
 1.  Clone Repository:
-``` git clone git@github.com:AmosGarner/PyInventory.git ```
+``` git clone git@github.com:AmosGarner/PyInventory.git```
 2. Run the install command
-```python main.py --action install --user [Username] ```
-##### The bracket ```[]``` symbols wrapping a value means that value is a variable and can be customized
+```python main.py --action install --user "[Username]"```
+###### The bracket ```[]``` symbols wrapping a value means that value is a variable and can be customized
 
 ## Program Features
 * Create, Display, Edit, and Remove collections of items.
 * Create, Remove, and Edit items in a user's collection.
 
-###Commands and Examples
+### Feature Commands and Examples:
+#### Collection Features:
 * Create a Collection
-    * Command: python main.py --action create_collection --user "[Username]" --name "[Collection Name]" --type item
+    * Command: ```python main.py --action create_collection --user "[Username]" --name "[Collection Name]" --type item```
+* Edit a Collection
+    * Command: ```python main.py --action edit_collection --user "[Username]" --name "[Collection Name]" --input "[New Collection Name]"```
+* Remove a Collection
+    * Command: ```python main.py --action remove_collection --user "[Username]" --name "[Collection Name]"```
+* Display a Collection
+    * Command: ```python main.py --action display_collection --user "[Username]" --name "[Collection Name]"```
+#### Item Features:
+* Create an Item
+* Edit an Item
+* Remove an Item
+
 ## Parameters:
 * ```--action```: Action that the script is going to take when running
     * ### Collection Commands:
