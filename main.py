@@ -1,6 +1,7 @@
 from ObjectFactories.ItemFactory import ItemFactory
 from osOps import *
 from collectionOps import *
+from itemOps import *
 import datetime, argparse
 
 CONST_COLLECTIONS_NAME = 'collections'
@@ -43,10 +44,14 @@ def main():
             dateTime = datetime.datetime.now()
 
             if arguments.collectionType.lower() == "item":
-                updateCollection(collectionFilePath, ItemFactory.factory(arguments.collectionType, [collectionLength+1, arguments.inputData, str(dateTime), str(dateTime)]))
+                newItem = ItemFactory.factory(arguments.collectionType, [collectionLength+1, arguments.inputData, str(dateTime), str(dateTime)])
+                collection = insertItem(getCollection(collectionFilePath), newItem)
             else:
                 inputDataArr = arguments.inputData.split('~')
-                updateCollection(collectionFilePath, ItemFactory.factory(arguments.collectionType, [collectionLength+1, inputDataArr[0], str(dateTime), str(dateTime), inputDataArr[1]]))
+                newItem = ItemFactory.factory(arguments.collectionType, [collectionLength+1, inputDataArr[0], str(dateTime), str(dateTime), inputDataArr[1]])
+                collection = insertItem(getCollection(collectionFilePath), newItem)
+
+            writeCollectionToFile(collectionFilePath, collection)
 
         elif arguments.action.lower() == "remove_collection":
             removeFile(collectionFilePath)

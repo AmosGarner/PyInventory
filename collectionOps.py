@@ -50,8 +50,3 @@ def editCollection(collection, collectionFilePath, newCollectionName):
     newCollectionFilePath = pathArr[0] + '/' + pathArr[1] + '/' + newFileName
 
     writeCollectionToFile(newCollectionFilePath, collection)
-
-def updateCollection(collectionFilePath, item):
-    collection = getCollection(collectionFilePath)
-    collection.items.append(item)
-    writeCollectionToFile(collectionFilePath, collection)
