@@ -56,7 +56,9 @@ def main():
 
             writeCollectionToFile(collectionFilePath, collection)
 
-
+        elif arguments.action.lower() == "remove_item":
+            collection = removeItem(getCollection(collectionFilePath), int(arguments.inputData))
+            writeCollectionToFile(collectionFilePath, collection)
 
 if __name__ == '__main__':
     main()
