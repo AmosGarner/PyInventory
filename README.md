@@ -38,30 +38,27 @@ Proof of concept for a python driven Collection Tracking System (ColTS) that man
 * Remove an Item
     * Command: ```python main.py --action remove_item --user "[Username]" --name "[Collection Name]" --type [ItemType] --input "[Item ID]"
 
-## Parameters:
+## Command Parameters:
 * ```--action```: Action that the script is going to take when running
-    * ### Collection Commands:
-    * install: Installs the scripts dependent directories
-        * EX:   ```python main.py --action install --user bburger```
-    * create_collection: Creates a blank collection of objects as per the user's choosing
-        * EX:   ```python main.py --action create_collection --user agarner --name items --type item```
-    * edit_collection: Edits the collection, in this program the collection's name is the only editable property
-        * EX:   ```python main.py --action edit_collection --user agarner --name items --input Items```
-    * remove_collection: Removes the collection file from the user's collections.
-        * EX:   ```python main.py --action remove_collection --user bburger --name items```
-    * ### Item Commands:
-    * insert_item: Insert's an item into a user's collection.
-        * EX:   ```python main.py --action insert_item --user bburger --name items --type item --input "Item Name"```
+    * install
+    * create_collection
+    * edit_collection
+    * remove_collection
+    * display_collection
+    * insert_item
+    * edit_item
+    * remove_item
 * ```--user```: The username set by the user
 * ```--name```: The name of the collection
 * ```--type```: The type of objects this collection will contain
-    * Item: Generic item
-    * Album
-    * Book
-    * Movie
-* ```--input```: Then length of the generated collection.
+    * Item: Generic item w/o special attribute
+    * Album: Has a artist attribute
+    * Book: Has a author attribute
+    * Movie: Has a director attribute
+* ```--input```: Values to be added to the operation.
+    * Values are separated with the Tilda (```~```) symbol and are in some cases optional.
 
-## Dependencies:
+## Program Dependencies:
 * [datetime](https://docs.python.org/2/library/datetime.html): Retrieves the date and time from the system.
 * [json](https://docs.python.org/2/library/json.html): Encodes data into object notation objects.
 * [os.path](https://docs.python.org/2/library/os.html): Handles OS level path, file, and directory operations.
