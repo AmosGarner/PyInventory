@@ -52,4 +52,26 @@ def editCollection(collection, collectionFilePath, newCollectionName):
     writeCollectionToFile(newCollectionFilePath, collection)
 
 def displayCollection(collection):
+    print '|-----------------------------------------------------------'
+    print '|    Collection Name: ' + collection.collectionName
+    print '|    Created By: ' + collection.username
+    print '|    Item Types: ' + collection.collectionType
+    print '|    Number of Items: ' + str(len(collection.items))
+    print '|-----------------------------------------------------------'
+    print '|    Items:'
+    if len(collection.items) >= 1:
+        for item in collection.items:
+            print '|==========================================================='
+            print '|        ' + str(item.id) + '). ' + item.name
+            print '|            Added On: ' + item.addedOn
+            print '|            Last Edited: ' + item.lastEdit
+            if collection.collectionType == 'book':
+                print '|            Author: ' + item.author
+            elif collection.collectionType == 'movie':
+                print '|            Director: ' + item.director
+            elif collection.collectionType == 'album':
+                print '|            Artist: ' + item.artist
+            print '|==========================================================='
+
+    print '|-----------------------------------------------------------'
     return None
