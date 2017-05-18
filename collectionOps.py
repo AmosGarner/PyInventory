@@ -50,3 +50,6 @@ def editCollection(collection, collectionFilePath, newCollectionName):
     newCollectionFilePath = pathArr[0] + '/' + pathArr[1] + '/' + newFileName
 
     writeCollectionToFile(newCollectionFilePath, collection)
+
+def displayCollection(collection):
+    return None

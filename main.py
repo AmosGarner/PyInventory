@@ -39,6 +39,9 @@ def main():
             removeFile(collectionFilePath)
             editCollection(collection, collectionFilePath, arguments.inputData)
 
+        elif arguments.action.lower() == "display_collection":
+            displayCollection(getCollection(collectionFilePath))
+
         elif arguments.action.lower() == "remove_collection":
             removeFile(collectionFilePath)
 
