@@ -5,7 +5,6 @@ Proof of concept for a python driven Collection Tracking System (ColTS) that man
 * Name: PyInventory
 * Version: 1.0
 * Author: Amos Garner
-* License: MIT
 
 ## Installation Instructions:
 1.  Clone Repository:
